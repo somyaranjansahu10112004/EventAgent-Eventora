@@ -1,0 +1,12 @@
+```json
+{
+  "is_event": false,
+  "event_name": null,
+  "date": null,
+  "time": null,
+  "venue": null,
+  "city": null,
+  "organizer": null,
+  "platform": "Instagram"
+}
+```

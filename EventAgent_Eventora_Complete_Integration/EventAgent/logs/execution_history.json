@@ -1,0 +1,47 @@
+[
+  {
+    "execution_id": "c98067f7",
+    "started_at": "2026-11-08T17:37:09.299872+00:00",
+    "finished_at": "2026-11-08T18:32:05.411410+00:00",
+    "duration_seconds": 3296.11,
+    "status": "completed",
+    "location": "Bengaluru",
+    "locations": [
+      "Bengaluru"
+    ],
+    "urls_collected": 346,
+    "events_extracted": 6,
+    "valid_records": 8,
+    "error": null
+  },
+  {
+    "execution_id": "d68d073e",
+    "started_at": "2026-11-08T17:31:23.516470+00:00",
+    "finished_at": "2026-11-08T17:36:01.725926+00:00",
+    "duration_seconds": 278.21,
+    "status": "completed",
+    "location": "Bengaluru",
+    "locations": [
+      "Bengaluru"
+    ],
+    "urls_collected": 344,
+    "events_extracted": 0,
+    "valid_records": 3,
+    "error": null
+  },
+  {
+    "execution_id": "91c3c5bd",
+    "started_at": "2026-11-08T13:06:41.474532+00:00",
+    "finished_at": "2026-11-08T13:22:31.344169+00:00",
+    "duration_seconds": 949.87,
+    "status": "completed",
+    "location": "Bengaluru",
+    "locations": [
+      "Bengaluru"
+    ],
+    "urls_collected": 348,
+    "events_extracted": 2,
+    "valid_records": 3,
+    "error": null
+  }
+]
