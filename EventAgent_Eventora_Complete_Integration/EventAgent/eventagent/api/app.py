@@ -19,8 +19,17 @@ INPUT_FILE = DATA_DIR / "social_results.csv"
 OUTPUT_FILE = DATA_DIR / "social_filtered_results.csv"
 
 app = FastAPI(title="EventAgent — Social Intelligence API", version="2.0.0")
-app.add_middleware(CORSMiddleware, allow_origins=["http://127.0.0.1:5173", "http://localhost:5173"], allow_credentials=False,
-                   allow_methods=["GET", "POST"], allow_headers=["Content-Type"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://127.0.0.1:5173",
+        "http://localhost:5173",
+        "https://eventagent-dashboard.vercel.app"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 _lock = threading.Lock()
 _state = {"running": False, "execution_id": None, "started_at": None,
