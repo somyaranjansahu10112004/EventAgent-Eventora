@@ -3,7 +3,7 @@ import{createRoot}from"react-dom/client";
 import{Activity,ArrowDownToLine,ArrowUpRight,Bell,Blocks,Bot,ChartNoAxesCombined,ChevronDown,ChevronLeft,ChevronRight,ChevronsUpDown,CircleHelp,Command,Database,Download,ExternalLink,FileSearch,Filter,FolderKanban,Globe,History,LayoutDashboard,ListFilter,LoaderCircle,Menu,Moon,MoreHorizontal,PanelLeftClose,Play,Radio,RefreshCw,Search,Settings,ShieldCheck,SlidersHorizontal,Sparkles,SquareTerminal,Sun,Workflow,X,CheckCircle2,Clock3,AlertCircle,Camera,CalendarDays,MapPin,Layers3,Zap}from"lucide-react";
 import{Area,AreaChart,Bar,BarChart,CartesianGrid,Cell,Legend,Pie,PieChart,ResponsiveContainer,Tooltip,XAxis,YAxis}from"recharts";
 import"./style.css";
-const API="";
+const API = import.meta.env.VITE_API_URL || "";
 const nav=[["Overview",LayoutDashboard],["Discoveries",Sparkles],["AI Agent",Bot],["Pipeline",Workflow],["Search Queries",Search],["Scraped Results",FileSearch],["Event Database",Database],["Analytics",ChartNoAxesCombined],["Execution History",History],["Settings",Settings]];
 async function get(path){const r=await fetch(API+path);if(!r.ok)throw new Error((await r.json().catch(()=>({detail:r.statusText}))).detail||r.statusText);return r.json()}
 function App(){
