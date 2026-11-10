@@ -129,7 +129,7 @@ async def try_sources(original_event, results, target_location=None):
                     safe_name = re.sub(r'[^a-zA-Z0-9]', '_', result['link'])[-120:]
                     with open(FAILED_HTML_DIR / f'{safe_name}.html', 'w', encoding='utf-8') as f:
                         f.write(page_html)
-                    print(f'⚠ Saved failed Facebook HTML -> {FAILED_HTML_DIR / f'{safe_name}.html'}')
+                    print(f"⚠️ Saved failed Facebook HTML -> {FAILED_HTML_DIR / (safe_name + '.html')}")
 
             print('\nGemini Extracted:')
             print(enriched)
