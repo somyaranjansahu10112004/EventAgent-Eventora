@@ -23,7 +23,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-app.use(cors({origin:clientOrigin.split(',').map(s=>s.trim()),methods:['GET','POST'],allowedHeaders:['Content-Type']}));
 app.use(express.json({limit:'32kb'}));
 app.use('/api/chat',rateLimit({windowMs:60_000,limit:20,standardHeaders:true,legacyHeaders:false,message:{error:'Too many chat requests. Please wait a moment and try again.'}}));
 const dataCandidates=[path.resolve(process.cwd(),'data/events.json'),path.resolve(__dirname,'../data/events.json'),path.resolve(__dirname,'../../data/events.json')];
