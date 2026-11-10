@@ -3,7 +3,7 @@ import{createRoot}from"react-dom/client";
 import{Activity,ArrowDownToLine,ArrowUpRight,Bell,Blocks,Bot,ChartNoAxesCombined,ChevronDown,ChevronLeft,ChevronRight,ChevronsUpDown,CircleHelp,Command,Database,Download,ExternalLink,FileSearch,Filter,FolderKanban,Globe,History,LayoutDashboard,ListFilter,LoaderCircle,Menu,Moon,MoreHorizontal,PanelLeftClose,Play,Radio,RefreshCw,Search,Settings,ShieldCheck,SlidersHorizontal,Sparkles,SquareTerminal,Sun,Workflow,X,CheckCircle2,Clock3,AlertCircle,Camera,CalendarDays,MapPin,Layers3,Zap}from"lucide-react";
 import{Area,AreaChart,Bar,BarChart,CartesianGrid,Cell,Legend,Pie,PieChart,ResponsiveContainer,Tooltip,XAxis,YAxis}from"recharts";
 import"./style.css";
-const API = import.meta.env.VITE_API_URL || "";
+const API = import.meta.env.VITE_API_URL || "https://eventagent-backend.onrender.com";
 const nav=[["Overview",LayoutDashboard],["Discoveries",Sparkles],["AI Agent",Bot],["Pipeline",Workflow],["Search Queries",Search],["Scraped Results",FileSearch],["Event Database",Database],["Analytics",ChartNoAxesCombined],["Execution History",History],["Settings",Settings]];
 async function get(path){const r=await fetch(API+path);if(!r.ok)throw new Error((await r.json().catch(()=>({detail:r.statusText}))).detail||r.statusText);return r.json()}
 function App(){
@@ -13,7 +13,7 @@ function App(){
  useEffect(()=>{setPageNum(1)},[page,query,category]);
  useEffect(()=>{setSelected(null);if(page==="Discoveries"||page==="Event Database")get(`/api/events?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}&page=${pageNum}`).then(setEvents).catch(()=>{});if(page==="Scraped Results")get(`/api/candidates?q=${encodeURIComponent(query)}&page=${pageNum}`).then(setCandidates).catch(()=>{});if(page==="Search Queries")get("/api/queries").then(x=>setQueries(x.items||[])).catch(()=>{})},[page,query,category,pageNum]);
  useEffect(()=>{if(toast){const t=setTimeout(()=>setToast(""),4000);return()=>clearTimeout(t)}},[toast]);
- const start=async()=>{setLoading(true);try{const r=await fetch("/api/start",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({location,limit,collect_first:collect})});const data=await r.json();if(!r.ok)throw Error(data.detail);setToast("Agent execution accepted · "+data.execution_id);refresh()}catch(e){setToast(e.message)}finally{setLoading(false)}};
+ const start=async()=>{setLoading(true);try{const r=await fetch(API + "/api/start",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({location,limit,collect_first:collect})});const data=await r.json();if(!r.ok)throw Error(data.detail);setToast("Agent execution accepted · "+data.execution_id);refresh()}catch(e){setToast(e.message)}finally{setLoading(false)}};
  const metric=dash?.metrics||{};const go=p=>{setPage(p);setMobile(false)};
  return <div className={dark?"app dark":"app light"}>
  <aside className={`sidebar ${collapsed?"collapsed":""} ${mobile?"mobile-open":""}`}>
